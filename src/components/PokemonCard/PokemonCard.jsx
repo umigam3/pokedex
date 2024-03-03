@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './PokemonCard.module.css';
+import loading from '../../assets/icons/ZKZg.gif'
 import { getBackgroundColorByType } from '../../utils/pokemonUtils';
 import { useFetch } from '../../hooks/useFetch';
 
@@ -8,7 +9,7 @@ const PokemonCard = ({ url }) => {
 	const backgroundColor = getBackgroundColorByType(data);
 
   return (
-    <div>
+    <div className={styles.cardContainer}>
 			{data ? (
 				<div style={{ backgroundColor }} className={styles.pokemonCard}>
 					<div className={styles.pokemonInfo}>
@@ -20,7 +21,7 @@ const PokemonCard = ({ url }) => {
 					</div>
 				</div>
 			) : (
-				<p>Loading...</p>
+				<img className={styles.loadingIcon} src={loading} />
 			)}
     </div>
   );
