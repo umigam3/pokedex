@@ -1,0 +1,14 @@
+.navBar {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.homeIcon {
+    width: 35px;
+    margin-right: 10px;
+}
+
+span {
+    font-size: 30px;
+}
