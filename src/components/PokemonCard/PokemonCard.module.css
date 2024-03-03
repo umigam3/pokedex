@@ -1,6 +1,5 @@
 .pokemonCard {
     display: flex;
-    align-items: center;
     justify-content: center;
 
     background-color: aqua;
@@ -12,11 +11,23 @@
     height: 5rem;
 }
 
-.pokemonInfo {
+.pokemonDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex: 0.8;
+    color: white;
+}
+
+.pokemonInfo {
+    display: flex;
+    flex-direction: column;
 }
 
 .pokemonImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 0.2;
 }
 

@@ -1,14 +1,14 @@
-.navBar {
+.navbar {
     display: flex;
     align-items: center;
     margin: 20px 0;
 }
 
-.homeIcon {
+.icon {
     width: 35px;
     margin-right: 10px;
 }
 
-span {
+.title {
     font-size: 30px;
 }

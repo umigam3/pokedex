@@ -29,3 +29,25 @@ export const getBackgroundColorByType = (pokemon) => {
 
     return typeColors[pokemonType] || 'lightgray';
 };
+
+export const formatName = (name) => {
+    if (!name) {
+        return ''; 
+    }
+
+    return name.charAt(0).toUpperCase() + name.slice(1); 
+}
+
+export const formatNumber = (id) => {
+    if (!id) {
+        return ''; 
+    }
+
+    const numberString = String(id);
+    
+    if (numberString.length > 3) {
+        return numberString;
+    }
+    
+    return numberString.padStart(3, '0');
+}

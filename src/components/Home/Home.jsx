@@ -5,13 +5,13 @@ import styles from './Home.module.css';
 import Icon from '../../assets/icons/icon.png';
 
 const Home = () => {
-  const { data } = useFetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0", true);
+  const { data } = useFetch("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0", true);
 
   return (
     <div>
-      <div className={styles.navBar}> 
-        <img src={Icon} className={styles.homeIcon}/>
-        <span>Pokédex</span>
+      <div className={styles.navbar}> 
+        <img src={Icon} className={styles.icon}/>
+        <span className={styles.title}>Pokédex</span>
       </div>
       <div>
         {data?.map((pokemon, index) => (
