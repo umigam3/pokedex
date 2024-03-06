@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './PokemonCard.module.css';
-import loading from '../../assets/icons/ZKZg.gif'
+import PokeBall from '../../assets/icons/pokeball-background.png'
 import { getBackgroundColorByType, formatName, formatNumber } from '../../utils/pokemonUtils';
 import { useFetch } from '../../hooks/useFetch';
 
@@ -15,17 +15,18 @@ const PokemonCard = ({ url }) => {
 					<div style={{backgroundColor}} className={styles.pokemonCard}>
 						<div className={styles.pokemonDetails}>
 							<div className={styles.pokemonInfo}>
-								<span>#{formatNumber(data.id)}</span>
+								<span className={styles.pokemonId}>#{formatNumber(data.id)}</span>
 								<span>{formatName(data.name)}</span>
 							</div>
-							<div className={styles.pokemonTypes}>
-								<span>{formatName(data.types[0].type.name)}</span>
-								{data.types[1] && <span>{formatName(data.types[1].type.name)}</span>}
+							<div>
+								<span className={styles.pokemonType}>{formatName(data.types[0].type.name)}</span>
+								{data.types[1] && <span className={styles.pokemonType}>{formatName(data.types[1].type.name)}</span>}
 							</div>
 						</div>
 						<div className={styles.pokemonImage}>
 							<img src={data.sprites.other['official-artwork'].front_default} alt={data.name} height='100px'/>
 						</div>
+						<img className={styles.pokemonBackground} src={PokeBall} alt={data.name} height='100px'/>
 					</div>
 				) : (
 					<p></p>
