@@ -28,7 +28,8 @@ const PokemonCard = ({ url }) => {
 						</div>
 					</div>
 				) : (
-					<img className={styles.loadingIcon} src={loading} />
+					<p></p>
+					// <img className={styles.loadingIcon} src={loading} />
 				)}
 		</div>
 	);

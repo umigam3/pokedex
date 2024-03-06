@@ -12,3 +12,8 @@
 .title {
     font-size: 30px;
 }
+
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+}

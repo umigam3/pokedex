@@ -5,7 +5,7 @@ import styles from './Home.module.css';
 import Icon from '../../assets/icons/icon.png';
 
 const Home = () => {
-  const { data } = useFetch("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0", true);
+  const { data } = useFetch("https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0", true);
 
   return (
     <div>
@@ -13,7 +13,7 @@ const Home = () => {
         <img src={Icon} className={styles.icon}/>
         <span className={styles.title}>Pokédex</span>
       </div>
-      <div>
+      <div className={styles.cardContainer}>
         {data?.map((pokemon, index) => (
           <PokemonCard key={index} url={pokemon.url} />
         ))}

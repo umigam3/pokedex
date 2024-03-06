@@ -2,13 +2,12 @@
     display: flex;
     justify-content: center;
 
-    background-color: aqua;
     margin: 10px 0;
     padding: 20px;
     border-radius: 20px;
 
     width: 100%;
-    height: 5rem;
+    height: 5rem;   
 }
 
 .pokemonDetails {
@@ -29,12 +28,28 @@
     align-items: center;
     justify-content: center;
     flex: 0.2;
+
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .cardContainer {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-basis: calc(33.33% - 20px);
+    margin: 0 10px;
+}
+  
+@media only screen and (max-width: 1065px) {
+    .cardContainer {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+@media only screen and (max-width: 635px) {
+    .cardContainer {
+        flex-basis: calc(100% - 20px);
+    }
 }
 
 .loadingIcon {
