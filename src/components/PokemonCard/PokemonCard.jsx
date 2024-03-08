@@ -5,9 +5,9 @@ import { getBackgroundColorByType, formatName, formatNumber } from '../../utils/
 import { useFetch } from '../../hooks/useFetch';
 
 const PokemonCard = ({ url }) => {
-	const { data } = useFetch(url, false);
+	const { data } = useFetch(url);
 
-    const backgroundColor = getBackgroundColorByType(data);
+  const backgroundColor = getBackgroundColorByType(data);
 
 	return (
 		<div className={styles.cardContainer}>
@@ -24,7 +24,7 @@ const PokemonCard = ({ url }) => {
 							</div>
 						</div>
 						<div className={styles.pokemonImage}>
-							<img src={data.sprites.other['official-artwork'].front_default} alt={data.name} height='100px'/>
+							<img src={data.sprites.other['official-artwork'].front_default} alt={data.name} height='100px' loading='lazy'/>
 						</div>
 						<img className={styles.pokemonBackground} src={PokeBall} alt={data.name} height='100px'/>
 					</div>

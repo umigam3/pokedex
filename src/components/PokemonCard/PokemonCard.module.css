@@ -68,6 +68,13 @@
     justify-content: center;
     flex-basis: calc(33.33% - 20px);
     margin: 0 10px;
+
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.cardContainer:hover {
+    transform: scale(1.05);
 }
   
 @media only screen and (max-width: 1065px) {
