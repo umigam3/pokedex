@@ -24,9 +24,9 @@ const PokemonCard = ({ url }) => {
 							</div>
 						</div>
 						<div className={styles.pokemonImage}>
-							<img src={data.sprites.other['official-artwork'].front_default} alt={data.name} height='100px' loading='lazy'/>
+							<img className={styles.pokemonImageTest} src={data.sprites.other['official-artwork'].front_default} alt={data.name} loading='lazy'/>
 						</div>
-						<img className={styles.pokemonBackground} src={PokeBall} alt={data.name} height='100px'/>
+						<img className={styles.pokemonBackground} src={PokeBall} alt={data.name}/>
 					</div>
 				) : (
 					<p></p>

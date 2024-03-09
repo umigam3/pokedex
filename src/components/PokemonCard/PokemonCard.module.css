@@ -35,6 +35,10 @@
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
 }
 
+.pokemonImageTest {
+    height: 100px;
+}
+
 .pokemonBackground {
     position: absolute;
     opacity: 0.3;
@@ -42,6 +46,8 @@
     top: -10px;
     scale: 1.25;
     transform: rotate(20deg);
+
+    height: 100px;
 }
 
 .pokemonId {

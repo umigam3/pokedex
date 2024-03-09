@@ -1,5 +1,4 @@
 import React from 'react';
-import { useFetch } from '../../hooks/useFetch.js';
 import PokemonCard from '../PokemonCard/PokemonCard.jsx';
 import styles from './Home.module.css';
 import Icon from '../../assets/icons/icon.png';
@@ -8,6 +7,7 @@ import { useState, useEffect, useMemo } from "react";
 const Home = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
   const itemsPerPage = 15;
 
   useEffect(() => {
@@ -28,8 +28,15 @@ const Home = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
 
-  const totalPages = Math.ceil(pokemonData.length / itemsPerPage);
+  const filteredPokemonData = pokemonData.filter(pokemon =>
+    pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredPokemonData.length / itemsPerPage);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -37,24 +44,32 @@ const Home = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = pokemonData.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredPokemonData.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <div>
       <div className={styles.navbar}> 
         <img src={Icon} className={styles.icon}/>
         <span className={styles.title}>Pokédex</span>
+        <input
+          type="text"
+          value={searchQuery}
+          onInput={e => setSearchQuery(e.target.value)}
+          placeholder="Search Pokémon by name"
+        />
       </div>
       <div className={styles.cardContainer}>
         {currentItems?.map((pokemon, index) => (
           <PokemonCard key={index} url={pokemon.url} />
         ))}
       </div>
-      <div className={styles.pagination}>
-        <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>Previous</button>
-        <span>{currentPage}/{totalPages}</span>
-        <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)}>Next</button>
-      </div>
+      {totalPages > 1 && 
+        <div className={styles.pagination}>
+          <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>Previous</button>
+          <span>{currentPage}/{totalPages}</span>
+          <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)}>Next</button>
+        </div>      
+      }
     </div>
   );
 }
