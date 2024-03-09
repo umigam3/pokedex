@@ -40,11 +40,32 @@ const Home = () => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    });  
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredPokemonData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const generatePageNumbers = () => {
+    const pageNumbers = [];
+    const totalPagesToShow = 3;
+
+    for (let i = Math.max(1, currentPage - totalPagesToShow); i <= Math.min(totalPages, currentPage + totalPagesToShow); i++) {
+      pageNumbers.push(i);
+    }
+
+    if (pageNumbers[pageNumbers.length - 1] !== totalPages) {
+      pageNumbers.push('...');
+      pageNumbers.push(totalPages);  
+    }
+
+    console.log(pageNumbers);
+    return pageNumbers;
+  };
 
   return (
     <div>
@@ -65,8 +86,12 @@ const Home = () => {
       </div>
       {totalPages > 1 && 
         <div className={styles.pagination}>
-          <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>Previous</button>
-          <span>{currentPage}/{totalPages}</span>
+          <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>Back</button>
+          <div className={styles.pageNumbers}>
+            {generatePageNumbers().map((pageNumber, index) => (
+                <button key={index} onClick={() => handlePageChange(pageNumber)} className={currentPage === pageNumber ? styles.activePage : ''}>{pageNumber}</button>
+            ))}
+          </div>
           <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)}>Next</button>
         </div>      
       }
