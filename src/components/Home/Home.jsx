@@ -1,25 +1,38 @@
 import React from 'react';
 import PokemonCard from '../PokemonCard/PokemonCard.jsx';
 import styles from './Home.module.css';
-import Icon from '../../assets/icons/icon.png';
-import { useState, useEffect, useMemo } from "react";
+import Icon from '../../assets/icons/pokeball.svg';
+import { useState, useEffect } from "react";
+import LoadingIcon from "../../assets/icons/loading-gif.gif"
 
 const Home = () => {
   const [pokemonData, setPokemonData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const itemsPerPage = 15;
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("Fetching data...")
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0");
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1024');
         if (!response.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setPokemonData(data.results);
+    
+        // Obtener información de cada Pokémon
+        const pokemonPromises = data.results.map(async (pokemon) => {
+          const pokemonResponse = await fetch(pokemon.url);
+          if (!pokemonResponse.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const pokemonData = await pokemonResponse.json();
+          return pokemonData;
+        });
+    
+        // Esperar a que se completen todas las llamadas y luego guardar los datos en un array
+        const pokemonInfo = await Promise.all(pokemonPromises);
+        setPokemonData(pokemonInfo);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -29,47 +42,25 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    setCurrentPage(1);
+    setIsLoading(true);
+    let timeoutId;
+
+      timeoutId = setTimeout(() => {
+        setIsLoading(false); // Desactivar isLoading después de 2 segundos
+      }, 1000);
+
+
+    return () => clearTimeout(timeoutId); // Limpiar el temporizador en cada cambio de búsqueda
   }, [searchQuery]);
+
 
   const filteredPokemonData = pokemonData.filter(pokemon =>
     pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const totalPages = Math.ceil(filteredPokemonData.length / itemsPerPage);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    window.scroll({
-      top: 0,
-      behavior: 'smooth'
-    });  
-  };
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredPokemonData.slice(indexOfFirstItem, indexOfLastItem);
-
-  const generatePageNumbers = () => {
-    const pageNumbers = [];
-    const totalPagesToShow = 3;
-
-    for (let i = Math.max(1, currentPage - totalPagesToShow); i <= Math.min(totalPages, currentPage + totalPagesToShow); i++) {
-      pageNumbers.push(i);
-    }
-
-    if (pageNumbers[pageNumbers.length - 1] !== totalPages) {
-      pageNumbers.push('...');
-      pageNumbers.push(totalPages);  
-    }
-
-    console.log(pageNumbers);
-    return pageNumbers;
-  };
-
   return (
-    <div>
-      <div className={styles.navbar}> 
+    <main>
+      <header className={styles.navbar}> 
         <img src={Icon} className={styles.icon}/>
         <span className={styles.title}>Pokédex</span>
         <input
@@ -78,24 +69,19 @@ const Home = () => {
           onInput={e => setSearchQuery(e.target.value)}
           placeholder="Search Pokémon by name"
         />
-      </div>
-      <div className={styles.cardContainer}>
-        {currentItems?.map((pokemon, index) => (
-          <PokemonCard key={index} url={pokemon.url} />
-        ))}
-      </div>
-      {totalPages > 1 && 
-        <div className={styles.pagination}>
-          <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)}>Back</button>
-          <div className={styles.pageNumbers}>
-            {generatePageNumbers().map((pageNumber, index) => (
-                <button key={index} onClick={() => handlePageChange(pageNumber)} className={currentPage === pageNumber ? styles.activePage : ''}>{pageNumber}</button>
-            ))}
+      </header>
+      <section className={styles.cardContainer}>
+        {isLoading ? (
+          <div className={styles.loadingContainer}>
+            <img src={LoadingIcon} className={styles.loading}/>
           </div>
-          <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)}>Next</button>
-        </div>      
-      }
-    </div>
+        ) : (
+          filteredPokemonData?.map((pokemon, index) => (
+            <PokemonCard key={index} pokemonData={pokemon} />
+          ))
+        )}
+      </section>
+    </main>
   );
 }
 

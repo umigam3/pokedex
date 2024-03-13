@@ -18,38 +18,14 @@
     flex-wrap: wrap;
 }
 
-/* Pagination */
-.pagination {
+.loading {
+    margin-top: 200px;
+    text-align: center;
+}
+
+.loadingContainer {
     display: flex;
-    justify-content: center;
+    width: 100%;
     align-items: center;
-    margin: 20px 0 35px 0;
-}
-
-.pagination button {
-    margin: 0 5px;
-    padding: 15px;
-    background-color: #f0f0f0;
-    border-radius: 100%;
-    border: none;
-    cursor: pointer;
-}
-
-.pagination button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.pageNumbers {
-    display: flex;
-}
-
-.pageNumbers button {
-    margin: 0 2px;
-    padding: 15px;
-}
-
-.pageNumbers button.activePage {
-    background-color: #007bff;
-    color: #fff;
+    justify-content: center;
 }

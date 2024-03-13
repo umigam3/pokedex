@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useFetch(url) {
+export function getPokemonData(url) {
     const [ data, setData ] = useState(null);
 
     useEffect(() => {

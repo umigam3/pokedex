@@ -72,12 +72,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-basis: calc(33.33% - 20px);
+    flex-basis: calc(33% - 20px);
     margin: 0 10px;
 
     transition: transform 0.3s ease;
     cursor: pointer;
+
+    transition: transform 0.3s ease-in-out;
 }
+
+.animate-enter {
+    transform: translateY(100%);
+  }
+  
+  .animate-enter-active {
+    transform: translateY(0%);
+  }
 
 .cardContainer:hover {
     transform: scale(1.05);
