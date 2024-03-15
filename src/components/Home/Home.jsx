@@ -67,9 +67,11 @@ const Home = () => {
           ))
         }
       </section>
-      <div className={styles.loadingContainer}>
-        <button onClick={handleShowMoreClick}>Load More!</button>
-      </div>
+      {showedPokemonData.length < filteredPokemonData.length && (
+        <div className={styles.loadingContainer}>
+          <button onClick={handleShowMoreClick}>Load More!</button>
+        </div>
+      )}
     </main>
   );
 }
