@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export function getPokemonData(url) {
-    const [ data, setData ] = useState(null);
+    const [ pokemonData, setData ] = useState(null);
 
     useEffect(() => {
         fetch(url)
@@ -9,5 +9,5 @@ export function getPokemonData(url) {
             .then((data) => setData(data))
     }, [url]);
 
-    return { data };
+    return { pokemonData };
 }

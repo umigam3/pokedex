@@ -2,14 +2,16 @@ import React from 'react';
 import styles from './PokemonCard.module.css';
 import PokeBall from '../../assets/icons/pokeball-background.png'
 import { getBackgroundColorByType, formatName, formatNumber } from '../../utils/pokemonUtils';
+import { getPokemonData } from '../../hooks/useFetch';
 
-const PokemonCard = ({ pokemonData }) => {
+const PokemonCard = ({ pokemonUrl }) => {
+	const { pokemonData } = getPokemonData(pokemonUrl);
 
   	const backgroundColor = getBackgroundColorByType(pokemonData);
 
 	return (
 		<div className={styles.cardContainer}>
-				{pokemonData ? (
+				{pokemonData && (
 					<div style={{backgroundColor}} className={styles.pokemonCard}>
 						<div className={styles.pokemonDetails}>
 							<div className={styles.pokemonInfo}>
@@ -26,8 +28,6 @@ const PokemonCard = ({ pokemonData }) => {
 						</div>
 						<img className={styles.pokemonBackground} src={PokeBall} alt={pokemonData.name}/>
 					</div>
-				) : (
-					<img className={styles.loadingIcon} src={loading} />
 				)}
 		</div>
 	);

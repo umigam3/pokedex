@@ -6,57 +6,47 @@ import { useState, useEffect } from "react";
 import LoadingIcon from "../../assets/icons/loading-gif.gif"
 
 const Home = () => {
-  const [pokemonData, setPokemonData] = useState([]);
+  const [allPokemonData, setAllPokemonData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+  const [showedPokemonData, setShowedPokemonData] = useState([]);
+  const [filteredPokemonData, setFilteredPokemonData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getAllPokemonData = async () => {
       try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1024');
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1024`);
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Failed to fetch data');
         }
         const data = await response.json();
     
-        // Obtener información de cada Pokémon
-        const pokemonPromises = data.results.map(async (pokemon) => {
-          const pokemonResponse = await fetch(pokemon.url);
-          if (!pokemonResponse.ok) {
-            throw new Error('Network response was not ok');
-          }
-          const pokemonData = await pokemonResponse.json();
-          return pokemonData;
-        });
-    
-        // Esperar a que se completen todas las llamadas y luego guardar los datos en un array
-        const pokemonInfo = await Promise.all(pokemonPromises);
-        setPokemonData(pokemonInfo);
-        setIsLoading(false);
+        setAllPokemonData(data.results);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
-    fetchData();
+    getAllPokemonData();
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
-    let timeoutId;
+    const filteredData = allPokemonData.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredPokemonData(filteredData);
+  }, [allPokemonData, searchQuery]);
 
-      timeoutId = setTimeout(() => {
-        setIsLoading(false); // Desactivar isLoading después de 2 segundos
-      }, 1000);
+  useEffect(() => {
+    setShowedPokemonData(filteredPokemonData.slice(0, 30));
+  }, [filteredPokemonData]);
 
-
-    return () => clearTimeout(timeoutId); // Limpiar el temporizador en cada cambio de búsqueda
-  }, [searchQuery]);
-
-
-  const filteredPokemonData = pokemonData.filter(pokemon =>
-    pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const handleShowMoreClick = () => {
+    const nextPokemonData = filteredPokemonData.slice(
+      showedPokemonData.length,
+      showedPokemonData.length + 30
+    );
+    setShowedPokemonData(prevData => [...prevData, ...nextPokemonData]);
+  }
 
   return (
     <main>
@@ -71,16 +61,15 @@ const Home = () => {
         />
       </header>
       <section className={styles.cardContainer}>
-        {isLoading ? (
-          <div className={styles.loadingContainer}>
-            <img src={LoadingIcon} className={styles.loading}/>
-          </div>
-        ) : (
-          filteredPokemonData?.map((pokemon, index) => (
-            <PokemonCard key={index} pokemonData={pokemon} />
+        {
+          showedPokemonData?.map((pokemon, index) => (
+            <PokemonCard key={index} pokemonUrl={pokemon.url} />
           ))
-        )}
+        }
       </section>
+      <div className={styles.loadingContainer}>
+        <button onClick={handleShowMoreClick}>Load More!</button>
+      </div>
     </main>
   );
 }
