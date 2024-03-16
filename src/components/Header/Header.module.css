@@ -1,0 +1,64 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: 35px;
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 30px;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+}
+
+.modeIcon {
+    margin-right: 10px;
+}
+
+.searchInput {
+    border: 0;
+    padding: 10px 25px 10px 10px;
+    border-radius: 50px;
+    background-color: #F0F0F0;
+}
+
+input:focus{
+    outline: none;
+}
+
+.searchBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.searchIcon {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    width: 20px;
+}
+
+.navIcon {
+    margin-left: 10px;
+    width: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.navIcon:hover {
+    transform: scale(1.25);
+}

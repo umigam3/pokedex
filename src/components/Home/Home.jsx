@@ -1,9 +1,8 @@
 import React from 'react';
 import PokemonCard from '../PokemonCard/PokemonCard.jsx';
+import Header from '../Header/Header.jsx'
 import styles from './Home.module.css';
-import Icon from '../../assets/icons/pokeball.svg';
 import { useState, useEffect } from "react";
-import LoadingIcon from "../../assets/icons/loading-gif.gif"
 
 const Home = () => {
   const [allPokemonData, setAllPokemonData] = useState([]);
@@ -50,16 +49,7 @@ const Home = () => {
 
   return (
     <main>
-      <header className={styles.navbar}> 
-        <img src={Icon} className={styles.icon}/>
-        <span className={styles.title}>Pokédex</span>
-        <input
-          type="text"
-          value={searchQuery}
-          onInput={e => setSearchQuery(e.target.value)}
-          placeholder="Search Pokémon by name"
-        />
-      </header>
+      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <section className={styles.cardContainer}>
         {
           showedPokemonData?.map((pokemon, index) => (
@@ -69,7 +59,7 @@ const Home = () => {
       </section>
       {showedPokemonData.length < filteredPokemonData.length && (
         <div className={styles.loadingContainer}>
-          <button onClick={handleShowMoreClick}>Load More!</button>
+          <button className={styles.loadMore} onClick={handleShowMoreClick}>Load more Pokémon</button>
         </div>
       )}
     </main>

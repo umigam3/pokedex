@@ -1,62 +1,11 @@
-.navbar {
-    display: flex;
-    align-items: center;
-    margin: 20px;
-}
-
-.icon {
-    width: 35px;
-    margin-right: 10px;
-}
-
-.title {
-    font-size: 30px;
+.main {
+    background-color: black;
 }
 
 .cardContainer {
     display: flex;
     flex-wrap: wrap;
-}
-
-.loading {
-    margin-top: 200px;
-    text-align: center;
-}
-
-/* Pagination */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0 35px 0;
-}
-
-.pagination button {
-    margin: 0 5px;
-    padding: 15px;
-    background-color: #f0f0f0;
-    border-radius: 100%;
-    border: none;
-    cursor: pointer;
-}
-
-.pagination button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.pageNumbers {
-    display: flex;
-}
-
-.pageNumbers button {
-    margin: 0 2px;
-    padding: 15px;
-}
-
-.pageNumbers button.activePage {
-    background-color: #007bff;
-    color: #fff;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .loadingContainer {
@@ -64,4 +13,21 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+}
+
+.loadMore {
+    border: 0;
+    padding: 10px 40px;
+    background-color: #F0F0F0;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.5s, color 1s;
+}
+
+.loadMore:hover {
+    background-color: black;
+    color: white;
+    font-weight: 600;
 }

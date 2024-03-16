@@ -6,7 +6,7 @@
 }
 
 .container {
-  font-family: 'Metropolis', sans-serif;
+  font-family: 'Metropolis', sans-serif !important;
   max-width: 1080px;
   margin: 0 auto;
 }
