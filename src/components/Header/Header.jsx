@@ -1,10 +1,10 @@
 import React from 'react';
-import Icon from '../../assets/icons/pokeball.svg';
-import DarkIcon from '../../assets/icons/dark.svg';
 import SearchIcon from '../../assets/icons/search.svg';
-import FilterIcon from '../../assets/icons/filter.svg'
 import styles from './Header.module.css';
 import PokeballIcon from '../PokeballIcon.jsx'
+import FilterIcon from '../FilterIcon.jsx'
+import DarkModeIcon from '../DarkModeIcon.jsx';
+import LightModeIcon from '../LightModeIcon.jsx';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../App';
 
@@ -20,7 +20,7 @@ const Header = ({ searchQuery, setSearchQuery }) => {
       <div className={styles.options}>
         <div className={styles.searchBox}>
           <input
-            className={styles.searchInput}
+            className={`${styles.searchInput} ${isDarkMode ? styles.searchInputDarkMode : ''}`}
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
@@ -28,8 +28,12 @@ const Header = ({ searchQuery, setSearchQuery }) => {
           />
           <img className={styles.searchIcon} src={SearchIcon} alt="Search Icon" />
         </div>
-        <img className={styles.navIcon} src={FilterIcon} alt="Filter" />
-        <img className={styles.navIcon} src={DarkIcon} alt="Dark Mode Icon" onClick={toggleDarkMode}/>
+        {isDarkMode ? (
+            <LightModeIcon onClick={toggleDarkMode}/>
+          ) : (
+            <DarkModeIcon onClick={toggleDarkMode}/>
+          )
+        }
       </div>
     </header>
   );

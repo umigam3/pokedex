@@ -1,33 +1,44 @@
+const TYPECOLORS = {
+    normal: '#B8B19D',
+    fire: '#FF9F6A',
+    water: '#6C95D6',
+    electric: '#FFEA66',
+    grass: '#69D167',
+    ice: '#7FDADA',
+    fighting: '#C4594B',
+    poison: '#8F3E8F',
+    ground: '#D9B64E',
+    flying: '#9B82E0',
+    psychic: '#FF719D',
+    bug: '#9FAE5F',
+    rock: '#B69737',
+    ghost: '#625462',
+    dragon: '#6137E5',
+    dark: '#625648',
+    steel: '#AFAEBF',
+    fairy: '#F297AB',
+    stellar: '#00B5FF',
+};
+
 export const getBackgroundColorByType = (pokemon) => {
     if (!pokemon || !pokemon.types || pokemon.types.length === 0) {
         return 'lightgray';
     }
 
-    const typeColors = {
-        normal: '#A8A878',
-        fire: '#F08030',
-        water: '#6890F0',
-        electric: '#F8D02F',
-        grass: '#78C84F',
-        ice: '#98D7D8',
-        fighting: '#C03028',
-        poison: '#A040A0',
-        ground: '#E0BF69',
-        flying: '#A890EF',
-        psychic: '#F95888',
-        bug: '#A7B820',
-        rock: '#B8A037',
-        ghost: '#705898',
-        dragon: '#7039F8',
-        dark: '#705848',
-        steel: '#B9B8D0',
-        fairy: '#F0B6BD',
-        stellar: '#34ACE7',
-    };
-
     const pokemonType = pokemon.types[0].type.name;
 
-    return typeColors[pokemonType] || 'lightgray';
+    return TYPECOLORS[pokemonType] || 'lightgray';
+};
+
+export const getBackgroundColorByIndividualType = (pokemon, i) => {
+    if (!pokemon || !pokemon.types || pokemon.types.length === 0) {
+        return 'lightgray';
+    }
+
+    let pokemonType = '';
+    if (pokemon.types[i]) pokemonType = pokemon.types[i].type.name;
+
+    return TYPECOLORS[pokemonType] || 'lightgray';
 };
 
 export const formatName = (name) => {

@@ -1,8 +1,23 @@
 .navbar {
     display: flex;
     align-items: center;
+    flex-wrap: auto;
     justify-content: space-between;
     padding: 15px;
+}
+
+@media (max-width: 450px) {
+    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding-top: 15px;
+    }
+
+    .navbar > *:not(:first-child) {
+        margin-top: 10px; /* Adjust the margin value as needed */
+    }    
 }
 
 .logo {
@@ -32,7 +47,12 @@
     border: 0;
     padding: 10px 25px 10px 10px;
     border-radius: 50px;
-    background-color: #F0F0F0;
+    background-color: #DDDDDD;
+}
+
+.searchInputDarkMode {
+    background-color: #363636;
+    color: #F0F0F0;
 }
 
 input:focus{
@@ -43,6 +63,7 @@ input:focus{
     position: relative;
     display: flex;
     align-items: center;
+    margin-right: 10px;
 }
 
 .searchIcon {

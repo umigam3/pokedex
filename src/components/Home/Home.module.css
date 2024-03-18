@@ -1,8 +1,8 @@
 .container {
     max-width: 1500px;
     margin: 0 auto;
+    min-height: 100vh;
 }
-
 
 .cardContainer {
     display: flex;
@@ -19,17 +19,22 @@
 
 .loadMore {
     border: 0;
-    padding: 10px 40px;
-    background-color: #F0F0F0;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
     margin-bottom: 15px;
-    transition: background-color 0.5s, color 1s;
+    transition: background-color 0.5s;
+    min-width: 15rem;
+    padding: 1rem 2rem;
+    font-size: 0.875rem;
+    line-height: 1;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #363636;
+    color: white;
+    border-radius: 50px;
+    font-weight: 500;
 }
 
 .loadMore:hover {
-    background-color: black;
-    color: white;
-    font-weight: 600;
+    background-color: #FF6961;
 }

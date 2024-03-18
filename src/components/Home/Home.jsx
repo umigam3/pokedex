@@ -59,7 +59,7 @@ const Home = () => {
       </section>
       {showedPokemonData.length < filteredPokemonData.length && (
         <div className={styles.loadingContainer}>
-          <button className={styles.loadMore} onClick={handleShowMoreClick}>Load more Pokémon</button>
+          <button className={`${styles.loadMore} ${styles.shine}`} onClick={handleShowMoreClick}>Load more Pokémon</button>
         </div>
       )}
     </main>
