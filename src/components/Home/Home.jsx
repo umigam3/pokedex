@@ -48,7 +48,7 @@ const Home = () => {
   }
 
   return (
-    <main>
+    <main className={styles.container}>
       <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <section className={styles.cardContainer}>
         {
