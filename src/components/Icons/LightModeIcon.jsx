@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { DarkModeContext } from '../App';
+import { DarkModeContext } from '../../App';
 
 const LightModeIcon = ( { onClick } ) => {
     const { isDarkMode } = useContext(DarkModeContext);

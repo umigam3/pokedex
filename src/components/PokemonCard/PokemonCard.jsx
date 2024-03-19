@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './PokemonCard.module.css';
-import PokeBall from '../../assets/icons/pokeball-background.png'
+import PokeBall from '../../assets/icons/pokeball-card-bg.png'
 import { getBackgroundColorByType, getBackgroundColorByIndividualType, formatName, formatNumber } from '../../utils/pokemonUtils';
 import { getPokemonData } from '../../hooks/useFetch';
 import { useContext } from 'react';

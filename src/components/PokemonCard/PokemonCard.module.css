@@ -20,10 +20,6 @@
     transition: background-color 1s;
 }
 
-.pokemonCardDarkMode:hover {
-    background-color: red;
-}
-
 .pokemonDetails {
     display: flex;
     flex-direction: column;

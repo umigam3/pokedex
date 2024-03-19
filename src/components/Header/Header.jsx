@@ -1,10 +1,10 @@
 import React from 'react';
-import SearchIcon from '../../assets/icons/search.svg';
 import styles from './Header.module.css';
-import PokeballIcon from '../PokeballIcon.jsx'
-import FilterIcon from '../FilterIcon.jsx'
-import DarkModeIcon from '../DarkModeIcon.jsx';
-import LightModeIcon from '../LightModeIcon.jsx';
+import PokeballIcon from '../Icons/PokeballIcon.jsx'
+import FilterIcon from '../Icons/FilterIcon.jsx'
+import SearchIcon from '../Icons/SearchIcon.jsx';
+import DarkModeIcon from '../Icons/DarkModeIcon.jsx';
+import LightModeIcon from '../Icons/LightModeIcon.jsx';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../App';
 
@@ -26,7 +26,7 @@ const Header = ({ searchQuery, setSearchQuery }) => {
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search by name..."
           />
-          <img className={styles.searchIcon} src={SearchIcon} alt="Search Icon" />
+          <SearchIcon />
         </div>
         {isDarkMode ? (
             <LightModeIcon onClick={toggleDarkMode}/>
