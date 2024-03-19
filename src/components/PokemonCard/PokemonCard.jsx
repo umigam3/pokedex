@@ -5,7 +5,8 @@ import { getBackgroundColorByType, getBackgroundColorByIndividualType, formatNam
 import { getPokemonData } from '../../hooks/useFetch';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../App';
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
 
 const PokemonCard = ({ pokemonUrl }) => {
 	const navigate = useNavigate();
@@ -20,7 +21,7 @@ const PokemonCard = ({ pokemonUrl }) => {
 	return (
 		<div className={styles.cardContainer}>
 				{pokemonData && (
-					<a href={`/pokemon/${pokemonData.id}`} style={{ backgroundColor: backgroundColor }} className={`${styles.pokemonCard} ${isDarkMode ? styles.pokemonCardDarkMode : ''}`}>
+					<Link to={`/pokemon/${pokemonData.id}`} style={{ backgroundColor: backgroundColor }} className={`${styles.pokemonCard} ${isDarkMode ? styles.pokemonCardDarkMode : ''}`}>
 						<div className={styles.pokemonDetails}>
 							<div className={styles.pokemonInfo}>
 								<span className={styles.pokemonId}>#{formatNumber(pokemonData.id)}</span>
@@ -36,7 +37,7 @@ const PokemonCard = ({ pokemonUrl }) => {
 							<img className={styles.pokemonImageSprite} src={pokemonData.sprites.other['home'].front_default} alt={pokemonData.name} loading='lazy' />
 						</div>
 						<img className={`${styles.pokemonBackground} ${isDarkMode ? styles.pokemonBackgroundDarkMode : ''}`} src={PokeBall} alt={pokemonData.name}/>
-					</a>
+					</Link>
 				)}
 		</div>
 	);
