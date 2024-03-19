@@ -6,7 +6,7 @@ const SearchIcon = () => {
     const { isDarkMode } = useContext(DarkModeContext);
 
 	return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" strokWidth="3" 
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" strokwidth="3" 
             style={{ 
                 position: 'absolute',
                 right: '10px',
