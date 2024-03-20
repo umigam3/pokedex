@@ -24,10 +24,11 @@ const PokemonEntry = () => {
         <section className={styles.container}>
           <div className={styles.pokemonHeader}>
             <header className={styles.pokemonHeaderTop}>
-              <h1 className={styles.pokemonName}>{formatName(pokemonData.name)}</h1>
+              <img className={styles.backIcon} src={PokeBallBGIcon} width="35px"/>
+              <h1>{formatName(pokemonData.name)}</h1>
               <h2 className={styles.pokemonId}>#{formatNumber(pokemonData.id)}</h2>
             </header>
-            <img className={styles.pokemonSprite} src={pokemonData.sprites.other['home'].front_default} alt={pokemonData.name} loading='lazy' />
+            <img className={styles.pokemonSprite} src={pokemonData.sprites.other['official-artwork'].front_default} alt={pokemonData.name} loading='lazy' />
             {/* <img className={`${styles.pokemonBackground1} ${styles.pokemonBackground}`} src={PokeBallBGIcon} alt={pokemonData.name}/>
 						<img className={`${styles.pokemonBackground2} ${styles.pokemonBackground}`} src={PokeBallBGIcon} alt={pokemonData.name}/>
 						<img className={`${styles.pokemonBackground3} ${styles.pokemonBackground}`} src={PokeBallBGIcon} alt={pokemonData.name}/> */}
