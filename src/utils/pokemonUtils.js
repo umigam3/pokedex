@@ -2,7 +2,7 @@ const TYPECOLORS = {
     normal: '#B8B19D',
     fire: '#FF9F6A',
     water: '#6C95D6',
-    electric: '#FFEA66',
+    electric: '#ECD05B',
     grass: '#69D167',
     ice: '#7FDADA',
     fighting: '#C4594B',
