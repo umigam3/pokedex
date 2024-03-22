@@ -24,6 +24,18 @@
     margin-top: -50px;
 }
 
+@media only screen and (max-width: 998px) {
+    .pokemonInfo {
+        font-size: 14px; /* Tamaño de fuente más pequeño para dispositivos móviles */
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .pokemonInfo {
+        font-size: 12px; /* Tamaño de fuente más pequeño para dispositivos móviles */
+    }
+}
+
 .pokemonInfoDarkMode {
     background-color: #1F1F1F;
     color: #EEEEEE;
