@@ -111,6 +111,10 @@ h2 {
     gap: 10px;
 }
 
+.pokemonStats {
+    width: 70%;
+}
+
 .statBarContainer {
     border-radius: 10px;
     display: inline-block;

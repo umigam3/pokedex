@@ -50,7 +50,7 @@ const PokemonEntry = () => {
               </div>
             </aside>
             <h2 style={{ color: backgroundColorType1 }}>Base Stats</h2>
-            <div style={{ width: '70%' }}>
+            <div className={styles.pokemonStats}>
               {pokemonData.stats.map((stat, index) => (
                 <div key={index}>
                   <span style={{ color: backgroundColorType1 }}>{formatStatName(stat.stat.name)}  </span>

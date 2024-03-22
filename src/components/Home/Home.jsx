@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const getAllPokemonData = async () => {
       try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1024`);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1400`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
