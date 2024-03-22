@@ -5,11 +5,10 @@ import { getBackgroundColorByType, getBackgroundColorByIndividualType, formatNam
 import { getPokemonData } from '../../hooks/useFetch';
 import { useContext } from 'react';
 import { DarkModeContext } from '../../App';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const PokemonCard = ({ pokemonUrl }) => {
-	const navigate = useNavigate();
 
 	const { pokemonData } = getPokemonData(pokemonUrl);
 	const { isDarkMode } = useContext(DarkModeContext);

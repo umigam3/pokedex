@@ -46,3 +46,8 @@
 .loadMore:hover {
     background-color: #FF6961;
 }
+
+.loadMore:focus {
+    text-decoration: none;
+    outline: none;
+}

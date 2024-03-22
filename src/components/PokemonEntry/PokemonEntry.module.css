@@ -80,3 +80,21 @@
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.7);
 }
+
+h2 {
+    margin: 20px 0;
+}
+
+.about {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
