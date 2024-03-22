@@ -11,7 +11,7 @@ const TYPECOLORS = {
     flying: '#9B82E0',
     psychic: '#FF719D',
     bug: '#9FAE5F',
-    rock: '#B69737',
+    rock: '#D6B174',
     ghost: '#625462',
     dragon: '#6137E5',
     dark: '#625648',
@@ -47,6 +47,44 @@ export const formatName = (name) => {
     }
 
     return name.charAt(0).toUpperCase() + name.slice(1); 
+}
+
+export function hexToRgb(hex) {
+    const bigint = parseInt(hex.substring(1), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `${r}, ${g}, ${b}`;
+}
+
+export function calculatePercetage(number) {
+    return (number / 255) * 100;
+}
+
+export const formatStatName = (name) => {
+    if (!name) {
+        return ''; 
+    }
+    
+    switch (name) {
+        case 'hp':
+            return 'HP';
+        case 'attack':
+            return 'ATK';
+        case 'defense':
+            return 'DEF';
+        case 'special-attack':
+            return 'SATK';
+        case 'special-defense':
+            return 'SDEF';
+        case 'speed':
+            return 'SPD';
+    
+        // Agrega más casos según sea necesario
+        default:
+            return name.toUpperCase(); // Por defecto, devuelve el nombre en mayúsculas
+    }
+
 }
 
 export const formatNumber = (id) => {

@@ -3,7 +3,7 @@ import styles from './PokemonEntry.module.css';
 import WeightIcon from '../Icons/WeightIcon.jsx';
 import RulerIcon from '../Icons/RulerIcon.jsx';
 import { useParams } from 'react-router-dom';
-import { getBackgroundColorByIndividualType, formatName, formatNumber } from '../../utils/pokemonUtils';
+import { getBackgroundColorByIndividualType, formatName, formatNumber, formatStatName, hexToRgb, calculatePercetage } from '../../utils/pokemonUtils';
 import { getPokemonData } from '../../hooks/useFetch';
 import { DarkModeContext } from '../../App';
 import { useContext } from 'react';
@@ -49,7 +49,18 @@ const PokemonEntry = () => {
                 <h3>Height</h3>
               </div>
             </aside>
-            {/* <h2 style={{ color: backgroundColorType1 }}>Stats</h2> */}
+            <h2 style={{ color: backgroundColorType1 }}>Base Stats</h2>
+            <div style={{ width: '70%' }}>
+              {pokemonData.stats.map((stat, index) => (
+                <div key={index}>
+                  <span style={{ color: backgroundColorType1 }}>{formatStatName(stat.stat.name)}  </span>
+                  <span>{stat.base_stat}</span>
+                  <div style={{ backgroundColor: `rgba(${hexToRgb(backgroundColorType1)}, 0.2)` }} className={styles.statBarContainer}>
+                    <div style={{ backgroundColor: backgroundColorType1, width: `${calculatePercetage(stat.base_stat)}%` }} className={styles.statBar}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
     )}
