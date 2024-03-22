@@ -20,7 +20,7 @@ const PokemonEntry = () => {
 	const backgroundColorType2 = getBackgroundColorByIndividualType(pokemonData, 1);
 
   return (
-    <main style={{ backgroundColor: backgroundColorType1 }}>
+    <main style={{ backgroundColor: backgroundColorType1, height: '100dvh' }}>
       {pokemonData && (
         <section className={styles.container}>
           <div className={`${styles.pokemonHeader} ${isDarkMode ? styles.DarkMode : ''}`}>
