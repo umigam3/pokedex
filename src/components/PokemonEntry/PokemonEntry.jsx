@@ -29,7 +29,7 @@ const PokemonEntry = () => {
               <h1>{formatName(pokemonData.name)}</h1>
               <h2 className={styles.pokemonId}>#{formatNumber(pokemonData.id)}</h2>
             </header>
-            {/* <img className={styles.pokemonSprite} src={pokemonData.sprites.other['official-artwork'].front_default} alt={pokemonData.name} loading='lazy' /> */}
+            <img className={styles.pokemonSprite} src={pokemonData.sprites.other['official-artwork'].front_default} alt={pokemonData.name} loading='lazy' />
           </div>
           <div className={`${styles.pokemonInfo} ${isDarkMode ? styles.pokemonInfoDarkMode : ''}`}>
             <div className={styles.pokemonTypes}>
