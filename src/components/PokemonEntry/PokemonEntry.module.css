@@ -21,6 +21,7 @@
     background-color: #f2f2f2;
     border-radius: 20px;
     flex: 0.65;
+    z-index: 1;
 }
 
 @media only screen and (max-width: 998px) {
@@ -50,7 +51,6 @@
     align-items: center;
     margin-top: 10px;
     padding: 0 30px;
-    z-index: 1;
 
     position: relative;
 }
@@ -64,9 +64,18 @@
 .pokemonSprite {
     position: absolute;
     bottom: -25px;
-    width: 200px;
-    object-fit: contain;
+    height: 95%;
+    z-index: 2;
+}
 
+.backgroundPokeball {
+    position: absolute;
+    bottom: -60px;
+    right: 50px;
+    height: 110%;
+    z-index: 1;
+    opacity: 0.3;
+    transform: rotate(15deg);
 }
 
 .pokemonName {

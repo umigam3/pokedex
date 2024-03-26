@@ -8,6 +8,7 @@ import { getPokemonData } from '../../hooks/useFetch';
 import { DarkModeContext } from '../../App';
 import { useContext } from 'react';
 import LeftArrowIcon from '../../assets/icons/arrow-left.svg';
+import BackgroundPokeball from '../../assets/icons/pokeball-card-bg.png';
 
 const PokemonEntry = ({ pokemonDataToShow, isPokemonShowing, setIsPokemonShowing }) => {
   
@@ -32,6 +33,7 @@ const PokemonEntry = ({ pokemonDataToShow, isPokemonShowing, setIsPokemonShowing
               <h2 className={styles.pokemonId}>#{formatNumber(pokemonData.id)}</h2>
             </header>
             <img className={styles.pokemonSprite} src={pokemonData.sprites.other['official-artwork'].front_default} alt={pokemonData.name} loading='lazy' />
+            <img className={styles.backgroundPokeball} src={BackgroundPokeball} loading='lazy' />
           </div>
           <div className={`${styles.pokemonInfo} ${isDarkMode ? styles.pokemonInfoDarkMode : ''}`}>
             <div className={styles.pokemonTypes}>
