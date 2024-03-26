@@ -9,15 +9,17 @@ import { DarkModeContext } from '../../App';
 import { useContext } from 'react';
 import LeftArrowIcon from '../../assets/icons/arrow-left.svg';
 
-const PokemonEntry = () => {
+const PokemonEntry = ({ pokemonDataToShow, isPokemonShowing, setIsPokemonShowing }) => {
   
-  const { id } = useParams();
-
-  const { pokemonData } = getPokemonData(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  const pokemonData = pokemonDataToShow;
   const { isDarkMode } = useContext(DarkModeContext);
 
   const backgroundColorType1 = getBackgroundColorByIndividualType(pokemonData, 0);
 	const backgroundColorType2 = getBackgroundColorByIndividualType(pokemonData, 1);
+
+  const handlePokemonEntry = () => {
+    setIsPokemonShowing(false);
+  }
 
   return (
     <main style={{ backgroundColor: backgroundColorType1, height: '100dvh' }}>
@@ -25,7 +27,7 @@ const PokemonEntry = () => {
         <section className={styles.container}>
           <div className={`${styles.pokemonHeader} ${isDarkMode ? styles.DarkMode : ''}`}>
             <header className={styles.pokemonHeaderTop}>
-              <img className={styles.backIcon} src={LeftArrowIcon} width="35px"/>
+              <img className={styles.backIcon} src={LeftArrowIcon} width="35px" onClick={handlePokemonEntry}/>
               <h1>{formatName(pokemonData.name)}</h1>
               <h2 className={styles.pokemonId}>#{formatNumber(pokemonData.id)}</h2>
             </header>

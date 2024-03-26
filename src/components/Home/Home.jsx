@@ -4,7 +4,7 @@ import Header from '../Header/Header.jsx'
 import styles from './Home.module.css';
 import { useState, useEffect } from "react";
 
-const Home = () => {
+const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDisplayPokemonData }) => {
   const [allPokemonData, setAllPokemonData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showedPokemonData, setShowedPokemonData] = useState([]);
@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const getAllPokemonData = async () => {
       try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1400`);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1024`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -36,13 +36,13 @@ const Home = () => {
   }, [allPokemonData, searchQuery]);
 
   useEffect(() => {
-    setShowedPokemonData(filteredPokemonData.slice(0, 36));
+    setShowedPokemonData(filteredPokemonData.slice(0, 10));
   }, [filteredPokemonData]);
 
   const handleShowMoreClick = () => {
     const nextPokemonData = filteredPokemonData.slice(
       showedPokemonData.length,
-      showedPokemonData.length + 36
+      showedPokemonData.length + 10
     );
     setShowedPokemonData(prevData => [...prevData, ...nextPokemonData]);
   }
@@ -53,7 +53,7 @@ const Home = () => {
       <section className={styles.cardContainer}>
         {
           showedPokemonData?.map((pokemon, index) => (
-            <PokemonCard key={index} pokemonUrl={pokemon.url} />
+            <PokemonCard key={index} pokemonUrl={pokemon.url} isPokemonShowing={isPokemonShowing} setIsPokemonShowing={setIsPokemonShowing} displayPokemonData={displayPokemonData} setDisplayPokemonData={setDisplayPokemonData}/>
           ))
         }
       </section>
