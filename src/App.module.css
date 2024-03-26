@@ -42,7 +42,7 @@
   width: 90%;
   max-width: 600px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: slideInFromBottom 0.2s ease-out forwards;
+  animation: slideInFromBottom 0.1s ease-out forwards;
 }
 
 @keyframes slideInFromBottom {
@@ -53,6 +53,7 @@
     transform: translateY(0);
   }
 }
+
 
 /* For WebKit (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {

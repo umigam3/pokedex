@@ -64,7 +64,9 @@
 .pokemonSprite {
     position: absolute;
     bottom: -25px;
-    width: 40%;
+    width: 200px;
+    object-fit: contain;
+
 }
 
 .pokemonName {
