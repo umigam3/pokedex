@@ -22,7 +22,7 @@ const PokemonEntry = ({ pokemonDataToShow, isPokemonShowing, setIsPokemonShowing
   }
 
   return (
-    <main style={{ backgroundColor: backgroundColorType1, height: '100dvh' }}>
+    <main style={{ backgroundColor: backgroundColorType1, borderRadius: '20px' }}>
       {pokemonData && (
         <section className={styles.container}>
           <div className={`${styles.pokemonHeader} ${isDarkMode ? styles.DarkMode : ''}`}>

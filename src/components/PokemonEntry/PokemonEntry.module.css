@@ -1,11 +1,10 @@
 .container {
-    width: 600px;
-    margin: 0 auto;
-    height: 100dvh;
+    height: 90dvh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding: 5px;
 }
 
 .pokemonInfo {
@@ -20,8 +19,7 @@
     height: 100%;
     color: #161616;
     background-color: #f2f2f2;
-    border-top-left-radius: 45px;
-    border-top-right-radius: 45px;
+    border-radius: 20px;
     flex: 0.65;
 }
 

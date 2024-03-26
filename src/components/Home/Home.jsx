@@ -36,13 +36,13 @@ const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDi
   }, [allPokemonData, searchQuery]);
 
   useEffect(() => {
-    setShowedPokemonData(filteredPokemonData.slice(0, 10));
+    setShowedPokemonData(filteredPokemonData.slice(0, 36));
   }, [filteredPokemonData]);
 
   const handleShowMoreClick = () => {
     const nextPokemonData = filteredPokemonData.slice(
       showedPokemonData.length,
-      showedPokemonData.length + 10
+      showedPokemonData.length + 36
     );
     setShowedPokemonData(prevData => [...prevData, ...nextPokemonData]);
   }
