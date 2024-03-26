@@ -2,15 +2,13 @@ import React from 'react';
 import styles from './PokemonEntry.module.css';
 import WeightIcon from '../Icons/WeightIcon.jsx';
 import RulerIcon from '../Icons/RulerIcon.jsx';
-import { useParams } from 'react-router-dom';
 import { getBackgroundColorByIndividualType, formatName, formatNumber, formatStatName, hexToRgb, calculatePercetage } from '../../utils/pokemonUtils';
-import { getPokemonData } from '../../hooks/useFetch';
 import { DarkModeContext } from '../../App';
 import { useContext } from 'react';
 import LeftArrowIcon from '../../assets/icons/arrow-left.svg';
 import BackgroundPokeball from '../../assets/icons/pokeball-card-bg.png';
 
-const PokemonEntry = ({ pokemonDataToShow, isPokemonShowing, setIsPokemonShowing }) => {
+const PokemonEntry = ({ pokemonDataToShow, setIsPokemonShowing }) => {
   
   const pokemonData = pokemonDataToShow;
   const { isDarkMode } = useContext(DarkModeContext);
