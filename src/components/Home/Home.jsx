@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDisplayPokemonData }) => {
   const [allPokemonData, setAllPokemonData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedType, setSelectedType] = useState(0);
   const [showedPokemonData, setShowedPokemonData] = useState([]);
   const [filteredPokemonData, setFilteredPokemonData] = useState([]);
 
@@ -36,6 +37,24 @@ const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDi
   }, [allPokemonData, searchQuery]);
 
   useEffect(() => {
+    const getAllPokemonDataByType = async () => {
+      try {
+        const response = await fetch(`https://pokeapi.co/api/v2/type/${selectedType}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+    
+        setFilteredPokemonData(data.pokemon);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    getAllPokemonDataByType();
+  }, [selectedType]);
+
+  useEffect(() => {
     setShowedPokemonData(filteredPokemonData.slice(0, 36));
   }, [filteredPokemonData]);
 
@@ -49,7 +68,7 @@ const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDi
 
   return (
     <main className={styles.container}>
-      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} selectedType={selectedType} setSelectedType={setSelectedType} />
       <section className={styles.cardContainer}>
         {
           showedPokemonData?.map((pokemon, index) => (
