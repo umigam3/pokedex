@@ -10,6 +10,7 @@ const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDi
   const [selectedType, setSelectedType] = useState(0);
   const [showedPokemonData, setShowedPokemonData] = useState([]);
   const [filteredPokemonData, setFilteredPokemonData] = useState([]);
+  const [filteredPokemonDataType, setFilteredPokemonDataType] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -22,21 +23,14 @@ const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDi
         const data = await response.json();
     
         setAllPokemonData(data.results);
+        setFilteredPokemonData(data.results);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-
     };
 
     getAllPokemonData();
   }, []);
-
-  useEffect(() => {
-    const filteredData = allPokemonData.filter(pokemon =>
-      pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredPokemonData(filteredData);
-  }, [allPokemonData, searchQuery]);
 
   useEffect(() => {
     if (selectedType != 0) {
@@ -48,7 +42,7 @@ const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDi
           }
           const data = await response.json();
       
-          setFilteredPokemonData(data.pokemon.map(pokemon => pokemon.pokemon));
+          setFilteredPokemonDataType(data.pokemon.map(pokemon => pokemon.pokemon));
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -56,9 +50,16 @@ const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDi
 
       getAllPokemonDataByType();
     } else {
-      setFilteredPokemonData(allPokemonData);
+      setFilteredPokemonDataType(allPokemonData);
     }
   }, [selectedType]);
+
+  useEffect(() => {
+    const filteredData = filteredPokemonDataType.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredPokemonData(filteredData);
+  }, [searchQuery, filteredPokemonDataType]);
 
   useEffect(() => {
     setShowedPokemonData(filteredPokemonData.slice(0, 36));
