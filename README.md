@@ -13,23 +13,23 @@ This is a simple Pokedex application built using React, JavaScript, CSS Modules,
 
 ## Technologies Used
 
-- React: JavaScript library for building user interfaces.
-- JavaScript: Programming language used for the application's logic.
-- CSS Modules: Modular approach to styling components.
-- PokeAPI: RESTful API for Pokémon data.
+- React
+- JavaScript
+- CSS Modules
+- PokeAPI
 
 ## Usage
 
 1. Clone the repository:
 
    ```
-   git clone https://github.com/your-username/pokedex-app.git
+   git clone https://github.com/your-username/pokedex.git
    ```
 
 2. Navigate into the project directory:
 
    ```
-   cd pokedex-app
+   cd pokedex
    ```
 
 3. Install dependencies:
@@ -41,7 +41,7 @@ This is a simple Pokedex application built using React, JavaScript, CSS Modules,
 4. Start the development server:
 
    ```
-   npm start
+   npm run dev
    ```
 
 5. Open the application in your browser:
