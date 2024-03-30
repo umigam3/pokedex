@@ -88,6 +88,10 @@ input:focus{
     background-color: #DDDDDD;
 }
 
+select:focus{
+    outline: none;
+}
+
 .selectTypeDarkMode {
     background-color: #161616;
     color: #F0F0F0;

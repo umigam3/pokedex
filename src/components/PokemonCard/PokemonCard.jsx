@@ -36,8 +36,9 @@ const PokemonCard = ({ pokemonUrl, isPokemonShowing, setIsPokemonShowing, displa
 						</div>
 					</div>
 					<div className={styles.pokemonImage}>
-						{/* <img className={styles.pokemonImageSprite} src={pokemonData.sprites.other['showdown'].front_default} alt={pokemonData.name} loading='lazy' /> */}
-						<img className={styles.pokemonImageSprite} src={pokemonData.sprites.other['official-artwork'].front_default} alt={pokemonData.name} loading='lazy' />
+						{pokemonData.sprites.other['official-artwork'].front_default && (
+							<img className={styles.pokemonImageSprite} src={pokemonData.sprites.other['official-artwork'].front_default} alt={pokemonData.name} loading='lazy' />
+						)}
 					</div>
 					<img className={`${styles.pokemonBackground} ${isDarkMode ? styles.pokemonBackgroundDarkMode : ''}`} src={PokeBall} alt={pokemonData.name}/>
 				</div>

@@ -16,7 +16,7 @@ const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDi
   useEffect(() => {
     const getAllPokemonData = async () => {
       try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1024`);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10000`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -24,6 +24,7 @@ const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDi
     
         setAllPokemonData(data.results);
         setFilteredPokemonData(data.results);
+        setFilteredPokemonDataType(data.results);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -86,26 +87,24 @@ const Home = ({ isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDi
   return (
     <main className={styles.container}>
       <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} selectedType={selectedType} setSelectedType={setSelectedType} />
-      {isLoading ? (
-        <div className={styles.loadingContainer}>
-          Loading...
-        </div>
-      ) : (
-        <>
           <section className={styles.cardContainer}>
-            {
-              showedPokemonData?.map((pokemon, index) => (
+          {
+            showedPokemonData.length > 0 ? (
+              showedPokemonData.map((pokemon, index) => (
                 <PokemonCard key={index} pokemonUrl={pokemon.url} isPokemonShowing={isPokemonShowing} setIsPokemonShowing={setIsPokemonShowing} displayPokemonData={displayPokemonData} setDisplayPokemonData={setDisplayPokemonData}/>
               ))
-            }
+            ) : (
+              <div className={styles.pokemonNotFound}>
+                <p>No Pokémons Found</p>
+              </div>
+            )
+          }          
           </section>
           {showedPokemonData.length < filteredPokemonData.length && (
             <div className={styles.loadingContainer}>
               <button className={`${styles.loadMore} ${styles.shine}`} onClick={handleShowMoreClick}>Load more Pokémon</button>
             </div>
           )}
-        </>
-      )}
     </main>
   );
 }

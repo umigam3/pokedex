@@ -9,7 +9,7 @@ const SearchIcon = () => {
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" strokwidth="3" 
             style={{ 
                 position: 'absolute',
-                right: '10px',
+                right: '5px',
                 bottom: '8px',
                 width: '20px'
             }} 

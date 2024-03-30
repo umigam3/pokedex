@@ -6,23 +6,29 @@ import { createContext, useState, useEffect } from 'react';
 export const DarkModeContext = createContext({});
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const darkModeFromStorage = localStorage.getItem('darkMode') === 'true';
+  const [isDarkMode, setIsDarkMode] = useState(darkModeFromStorage);
   const [isPokemonShowing, setIsPokemonShowing] = useState(false);
   const [displayPokemonData, setDisplayPokemonData] = useState({});
 
   useEffect(() => {
     if (isPokemonShowing) {
-      // Calculate scrollbar width
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      // Block scroll when modal is open and maintain scrollbar width
       document.body.style.overflow = 'hidden';
       document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
-      // Restore scroll when modal is closed
       document.body.style.overflow = 'auto';
       document.body.style.paddingRight = '0';
     }
   }, [isPokemonShowing]);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', isDarkMode);
+
+    const metaThemeColor = document.querySelector('meta[name=theme-color]');
+    console.log(metaThemeColor);
+    metaThemeColor.content = isDarkMode ? '#161616' : '#DDDDDD';
+  }, [isDarkMode]);
   
   const toggleDarkMode = () => {
     setIsDarkMode(prevMode => !prevMode);
