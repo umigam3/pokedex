@@ -27,7 +27,7 @@ function App() {
 
     const metaThemeColor = document.querySelector('meta[name=theme-color]');
     console.log(metaThemeColor);
-    metaThemeColor.content = isDarkMode ? '#161616' : '#DDDDDD';
+    metaThemeColor.content = isDarkMode ? '#FFFFFF' : '#000000';
   }, [isDarkMode]);
   
   const toggleDarkMode = () => {
