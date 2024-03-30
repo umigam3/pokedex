@@ -1,26 +1,30 @@
 import React from 'react';
 import styles from './PokemonCard.module.css';
 import PokeBall from '../../assets/icons/pokeball-card-bg.png'
-import { getBackgroundColorByType, getBackgroundColorByIndividualType, formatName, formatNumber } from '../../utils/pokemonUtils';
-import { getPokemonData } from '../../hooks/useFetch';
 import { useContext } from 'react';
+import { getBackgroundColorByType, getBackgroundColorByIndividualType, formatName, formatNumber } from '../../utils/pokemonUtils';
+import { getPokemonData } from '../../hooks/useFetchSinglePokemonData';
 import { DarkModeContext } from '../../App';
-import { Link } from 'react-router-dom';
 
-const PokemonCard = ({ pokemonUrl, isPokemonShowing, setIsPokemonShowing, displayPokemonData, setDisplayPokemonData }) => {
+const PokemonCard = ({ pokemonUrl, setIsPokemonShowing, setDisplayPokemonData }) => {
 
+	// Fetching Pokemon data from the API based on the URL.
 	const { pokemonData } = getPokemonData(pokemonUrl);
+	// Accessing the DarkModeContext to determine if dark mode is enabled.
 	const { isDarkMode } = useContext(DarkModeContext);
 
-    const backgroundColor = !isDarkMode ? getBackgroundColorByType(pokemonData) : 'transparent';
+	// Determine the background color of the card and types based on whether dark mode is enabled or not.
+  const backgroundColor = !isDarkMode ? getBackgroundColorByType(pokemonData) : 'transparent';
 	const backgroundColorType1 = getBackgroundColorByIndividualType(pokemonData, 0);
 	const backgroundColorType2 = getBackgroundColorByIndividualType(pokemonData, 1);
 
+	// Function to handle showing detailed information of the Pokemon on click.
 	const handleShowPokemon = () => {
 		setIsPokemonShowing(true);
 		setDisplayPokemonData(pokemonData);
 	}
 
+	// Render the component.
 	return (
 		<div className={styles.cardContainer}>
 			{pokemonData && (

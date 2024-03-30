@@ -21,28 +21,6 @@
     position: relative;
 }
 
-@media only screen and (max-width: 998px) {
-    .pokemonInfo {
-        font-size: 14px;
-        flex: 0.55;
-    }
-
-    .pokemonHeader {
-        flex: 0.45;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .pokemonInfo {
-        font-size: 12px;
-        flex: 0.55;
-    }
-
-    .pokemonHeader {
-        flex: 0.45;
-    }
-}
-
 .pokemonInfo {
     display: flex;
     flex-direction: column;
@@ -150,4 +128,26 @@ h2 {
 .statBar {
     border-radius: 10px;
     height: 10px;
+}
+
+@media only screen and (max-width: 998px) {
+    .pokemonInfo {
+        font-size: 14px;
+        flex: 0.55;
+    }
+
+    .pokemonHeader {
+        flex: 0.45;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .pokemonInfo {
+        font-size: 12px;
+        flex: 0.55;
+    }
+
+    .pokemonHeader {
+        flex: 0.45;
+    }
 }

@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Metropolis';
+    src: url('./src/assets/fonts/Metropolis-Bold.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* CSS Reset */
+* {
+    font-family: 'Metropolis', sans-serif !important;
+}
+
 html {
     box-sizing: border-box;
     background-color: #161616;
@@ -6,13 +18,13 @@ html {
 body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     margin: 0;
     padding: 0;
-    font-weight: normal;
 }
   
 ol, ul {
     list-style: none;
 }
 
+/* Disable mobile highlight color of all elements */
 input,
 textarea,
 button,
@@ -21,3 +33,24 @@ div,
 a {
     -webkit-tap-highlight-color: transparent;
 }
+
+/* For WebKit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+    width: 15px; /* width of the scrollbar */
+} 
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #1F1F1F; /* color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #424242; /* color of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* color of the scrollbar handle on hover */
+}
+

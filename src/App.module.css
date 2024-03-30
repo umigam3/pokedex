@@ -1,10 +1,3 @@
-@font-face {
-  font-family: 'Metropolis';
-  src: url('./assets/fonts/Metropolis-Bold.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .darkMode {
   background-color: #161616;
   color: #EEEEEE;
@@ -15,11 +8,6 @@
   background-color: #f2f2f2;
   color: #161616;
   transition: all 0.5s ease;
-}
-
-.container {
-  font-family: 'Metropolis', sans-serif !important;
-  transition: 'all 0.5s ease';
 }
 
 .modalBackground {
@@ -57,7 +45,7 @@
 
 .scrollButton {
   border: 0;
-  background: #F2613F;
+  background: #FF6961;
   position: fixed;
   bottom: 1rem;
   right: 1rem;
@@ -84,39 +72,6 @@
   }
 }
 
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 .fadeIn {
-  animation: fadeIn 0.5s ease-in-out forwards; /* Duración de la animación y tipo de curva */
-}
-
-.fadeOut {
-  animation: fadeOut 0.5s ease-in-out forwards; /* Duración de la animación y tipo de curva */
-}
-
-/* For WebKit (Chrome, Safari, etc.) */
-::-webkit-scrollbar {
-  width: 15px; /* width of the scrollbar */
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #1F1F1F; /* color of the track */
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #424242; /* color of the scrollbar handle */
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; /* color of the scrollbar handle on hover */
+  animation: fadeIn 0.2s ease-in-out forwards;
 }

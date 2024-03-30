@@ -8,18 +8,20 @@ import { useContext } from 'react';
 import LeftArrowIcon from '../../assets/icons/arrow-left.svg';
 import BackgroundPokeball from '../../assets/icons/pokeball-card-bg.png';
 
-const PokemonEntry = ({ pokemonDataToShow, setIsPokemonShowing }) => {
-  
-  const pokemonData = pokemonDataToShow;
+const PokemonEntry = ({ pokemonData, setIsPokemonShowing }) => {
+  // Accessing DarkModeContext to determine dark mode state.
   const { isDarkMode } = useContext(DarkModeContext);
 
+  // Determine background color for type badges.
   const backgroundColorType1 = getBackgroundColorByIndividualType(pokemonData, 0);
 	const backgroundColorType2 = getBackgroundColorByIndividualType(pokemonData, 1);
 
+  // Function to handle closing Pokemon entry and returning to previous screen.
   const handlePokemonEntry = () => {
     setIsPokemonShowing(false);
   }
 
+  // Render the component.
   return (
     <main style={{ backgroundColor: backgroundColorType1, borderRadius: '20px' }}>
       {pokemonData && (

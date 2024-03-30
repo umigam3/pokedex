@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
 import PokeballIcon from '../Icons/PokeballIcon.jsx'
-import FilterIcon from '../Icons/FilterIcon.jsx'
 import SearchIcon from '../Icons/SearchIcon.jsx';
 import DarkModeIcon from '../Icons/DarkModeIcon.jsx';
 import LightModeIcon from '../Icons/LightModeIcon.jsx';
@@ -9,12 +8,15 @@ import { useContext } from 'react';
 import { DarkModeContext } from '../../App';
 
 const Header = ({ searchQuery, setSearchQuery, selectedType, setSelectedType }) => {
+  // useContext hook to access DarkModeContext.
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
 
+  // Function to handle type change in select dropdown.
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
   }
 
+  // Render the component.
   return (
     <header className={`${styles.navbar} ${isDarkMode ? styles.darkMode : styles.lightMode}`} >
       <div className={styles.logo}>
@@ -34,7 +36,6 @@ const Header = ({ searchQuery, setSearchQuery, selectedType, setSelectedType }) 
         </div>
         <select 
           className={`${styles.selectType} ${isDarkMode ? styles.selectTypeDarkMode : ''}`} 
-          id="pokemonType" 
           value={selectedType} 
           onChange={handleTypeChange}>
             <option value="0">All</option>

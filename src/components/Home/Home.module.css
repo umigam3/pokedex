@@ -37,14 +37,14 @@
     cursor: pointer;
     text-decoration: none;
     text-transform: uppercase;
-    background: #363636;
+    background: #FF6961;
     color: white;
     border-radius: 50px;
     font-weight: 500;
 }
 
-.loadMore:hover {
-    background-color: #FF6961;
+.loadMoreDarkMode {
+    color: #161616;
 }
 
 .loadMore:focus {
