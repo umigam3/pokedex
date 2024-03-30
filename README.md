@@ -2,7 +2,7 @@
 
 This is a simple Pokedex application built using React, JavaScript, CSS Modules, and various React functionalities such as state management, useEffects, and more. It utilizes the PokeAPI to fetch and display information about Pokémon, providing features like displaying Pokémon, loading more Pokémon, searching, filtering by types, viewing statistics, and detailed Pokémon information. Additionally, the app offers both dark and light modes for user preference.
 
-![Pokemon List](public/pokemonList.jpg)
+![Pokemon List](public/pokemonList.png)
 
 ## Features
 
@@ -13,7 +13,7 @@ This is a simple Pokedex application built using React, JavaScript, CSS Modules,
 - View Statistics: Access detailed statistics of Pokémon.
 - Dark/Light Mode: Switch between dark and light themes for comfortable viewing.
 
-![Pokemon Card](public/pokemonCard.jpg)
+![Pokemon Card](public/pokemonCard.png)
 
 ## Technologies Used
 
