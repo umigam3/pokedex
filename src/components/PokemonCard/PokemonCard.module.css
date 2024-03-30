@@ -15,6 +15,10 @@
     border: 0.5px solid transparent;
 }
 
+.pokemonCard:focus {
+    outline: none;
+}
+
 .pokemonCardDarkMode {
     border: 0.5px solid #262626;
     background-color: #1F1F1F !important;
