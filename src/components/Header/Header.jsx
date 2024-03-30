@@ -32,7 +32,7 @@ const Header = ({ searchQuery, setSearchQuery, selectedType, setSelectedType }) 
           />
           <SearchIcon />
         </div>
-        <select id="pokemonType" value={selectedType} onChange={handleTypeChange}>
+        <select className={`${styles.selectType} ${isDarkMode ? styles.selectTypeDarkMode : ''}`} id="pokemonType" value={selectedType} onChange={handleTypeChange}>
           <option value="0">All</option>
           <option value="1">Normal</option>
           <option value="2">Fighting</option>
