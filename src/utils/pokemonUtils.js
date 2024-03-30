@@ -106,3 +106,25 @@ export const formatNumber = (id) => {
 	
 	return numberString.padStart(3, '0');
 }
+
+// Function to format weight in kilograms.
+export const formatWeight = (weight) => {
+	if (!weight) {
+		return ''; 
+	}
+
+	const formattedWeight = weight / 10 + ' kg';
+
+	return formattedWeight;
+}
+
+// Function to format height in meters.
+export const formatHeight = (height) => {
+	if (!height) {
+		return ''; 
+	}
+
+	const formattedHeight = height / 10 + ' m';
+
+	return formattedHeight;
+}

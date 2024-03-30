@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './PokemonEntry.module.css';
 import WeightIcon from '../Icons/WeightIcon.jsx';
 import RulerIcon from '../Icons/RulerIcon.jsx';
-import { getBackgroundColorByIndividualType, formatName, formatNumber, formatStatName, hexToRgb, calculatePercetage } from '../../utils/pokemonUtils';
+import { getBackgroundColorByIndividualType, formatName, formatNumber, formatStatName, hexToRgb, calculatePercetage, formatWeight, formatHeight } from '../../utils/pokemonUtils';
 import { DarkModeContext } from '../../App';
 import { useContext } from 'react';
 import LeftArrowIcon from '../../assets/icons/arrow-left.svg';
@@ -44,13 +44,11 @@ const PokemonEntry = ({ pokemonData, setIsPokemonShowing }) => {
             <aside className={styles.about}>
               <div className={styles.aboutInfo}>
                 <WeightIcon />
-                <span>{pokemonData.weight}</span>
-                <h3>Weight</h3>
+                <span>{formatWeight(pokemonData.weight)}</span>
               </div>
               <div className={styles.aboutInfo}>
                 <RulerIcon />
-                <span>{pokemonData.height}</span>
-                <h3>Height</h3>
+                <span>{formatHeight(pokemonData.height)}</span>
               </div>
             </aside>
             <h2 style={{ color: backgroundColorType1 }}>Base Stats</h2>
