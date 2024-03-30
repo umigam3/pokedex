@@ -55,6 +55,51 @@
   }
 }
 
+.scrollButton {
+  border: 0;
+  background: #F2613F;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: opacity .5s;
+}
+
+.scrollButton:hover {
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out forwards; /* Duración de la animación y tipo de curva */
+}
+
+.fadeOut {
+  animation: fadeOut 0.5s ease-in-out forwards; /* Duración de la animación y tipo de curva */
+}
 
 /* For WebKit (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
