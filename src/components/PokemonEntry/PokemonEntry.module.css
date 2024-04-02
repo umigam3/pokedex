@@ -134,21 +134,21 @@ h2 {
 @media only screen and (max-width: 998px) {
     .pokemonInfo {
         font-size: 14px;
-        flex: 0.55;
+        flex: 0.60;
     }
 
     .pokemonHeader {
-        flex: 0.45;
+        flex: 0.40;
     }
 }
 
 @media only screen and (max-width: 600px) {
     .pokemonInfo {
         font-size: 12px;
-        flex: 0.55;
+        flex: 0.60;
     }
 
     .pokemonHeader {
-        flex: 0.45;
+        flex: 0.40;
     }
 }
